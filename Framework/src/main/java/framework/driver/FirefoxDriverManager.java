@@ -9,7 +9,7 @@ public class FirefoxDriverManager extends DriverSingleton {
     
     @Override 
     public void createWebDriver() {
-        FirefoxOptions options = new FirefoxOptions()
+        FirefoxOptions options = new FirefoxOptions();
         
         this.driver = new FirefoxDriver(options);
     }

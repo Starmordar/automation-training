@@ -29,9 +29,9 @@ public class App {
 
         HotelPage hotelPage = hotelsPage.chooseHotel();
 
-        BillingPage billinPage = hotelPage.redirectToBetterLife();
-
-        if (billinPage.submitSearch() === 0) return true
+//        BillingPage billinPage = hotelPage.redirectToBetterLife();
+//
+//        if (billinPage.submitSearch() == 0) return true;
         return false;
     }
 
@@ -56,13 +56,14 @@ public class App {
 
         BillingPage bill = hotel.redirectToBetterLife();
 
-        bill.submitChoosedPreference();
-
-        if (billinPage.submitSearch() === 0) return true
+//        bill.submitChoosedPreference();
+//
+//        if (billinPage.submitSearch() == 0) return true;
         return false;
     }
 
     public static void main(String[] args) {
+        System.out.println("lol");
         System.setProperty("webdriver.chrome.driver", "/home/roman/Desktop/chromedriver");
     }
 }

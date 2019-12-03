@@ -22,12 +22,12 @@ public class BillingPage {
         this.driver = driver;
     }
 
-    public Integer submitChoosedPreference() {
-       driver.findElements(inputLocator).click();
-       driver.findElements(SubmitBtn).click(); 
-
-       driver.findElements(inputCityLocator).size();
-    }
+//    public Integer submitChoosedPreference() {
+//       driver.findElements(inputLocator).click();
+//       driver.findElements(SubmitBtn).click();
+//
+//       driver.findElements(inputCityLocator).size();
+//    }
 
     public Integer submitSearch() {
         return driver.findElements(inputCityLocator).size();

@@ -4,14 +4,14 @@ public class HotelSearchOptions {
     private String destination;
     private String arrivalDate;
     private String departureDate;
-    private Integer numberOfPersons
+    private Integer numberOfPersons;
 
 
     public HotelSearchOptions(String destination, String arrivalDate, String departureDate, Integer numberOfPersons) {
         this.destination = destination;
         this.arrivalDate = arrivalDate;
         this.departureDate = departureDate;
-        this.numberOfPersons = numberOfPersons
+        this.numberOfPersons = numberOfPersons;
     }
 
     public String getDestination() {

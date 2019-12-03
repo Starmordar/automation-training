@@ -21,7 +21,7 @@ public class SearchHotels extends CommonCondition {
                         hotelSearchOptions.getArrivalDate(),
                         hotelSearchOptions.getDepartureDate())
                 .chooseHotel()
-                .getDestinationHotel()
+                .getDestinationHotel();
                 
         Assert.assertEquals(DESTINATION, message);
     }

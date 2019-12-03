@@ -10,7 +10,7 @@ public class DriverSingleton {
     private static final String BROWSER_FIREFOX = "firefox";
 
     private WebDriver driver;
-    protected abstract void createWebDriver()
+    protected abstract void createWebDriver();
 
     public static WebDriver getDriver() {
         if (driver == null) {

@@ -10,7 +10,7 @@ public class ChromeDriverManager extends DriverSingleton {
     
     @Override 
     public void createWebDriver() {
-        ChromeOptions options = new ChromeOptions()
+        ChromeOptions options = new ChromeOptions();
         
         this.driver = new ChromeDriver(options);
     }

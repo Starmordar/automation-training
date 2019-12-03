@@ -15,7 +15,7 @@ public class HotelPage extends AbstractPage {
     @FindBy(xpath = "//*[@data-element-name=\"book-btn\"]")
     private WebElement hotelDescriptionLocator;
 
-    public HotelsPage(WebDriver driver) {
+    public HotelPage(WebDriver driver) {
         super(driver);
 
         PageFactory.initElements(this.driver, this);
