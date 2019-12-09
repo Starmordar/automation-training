@@ -3,6 +3,7 @@ package driver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverSingleton {
@@ -20,8 +21,11 @@ public class DriverSingleton {
                     driver = new FirefoxDriver();
                 }
                 default: {
+                    ChromeOptions options = new ChromeOptions();
+                    options.addArguments("--no-sandbox");
+
                     WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
+                    driver = new ChromeDriver(options);
                 }
             }
             driver.manage().window().maximize();
