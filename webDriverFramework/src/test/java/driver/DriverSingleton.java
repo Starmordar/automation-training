@@ -23,7 +23,7 @@ public class DriverSingleton {
                 default: {
                     ChromeOptions options = new ChromeOptions();
                     options.addArguments("--disable-extensions");
-                    options.addArguments("--headless");
+//                    options.addArguments("--headless");
                     options.addArguments("--disable-gpu");
                     options.addArguments("--no-sandbox");
 
