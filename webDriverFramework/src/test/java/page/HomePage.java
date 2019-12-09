@@ -60,7 +60,7 @@ public class HomePage extends AbstractPage {
     public HomePage changeSystemLang() {
         currentPageLang.click();
         norwayPageLang.click();
-
+        logger.info("kek");
         return new HomePage(driver);
     }
 
