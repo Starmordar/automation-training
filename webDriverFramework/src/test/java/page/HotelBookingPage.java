@@ -20,26 +20,34 @@ public class HotelBookingPage extends AbstractPage {
     @FindBy(css = ".sc-bwzfXH.eBegzL span strong")
     private WebElement infoPageScore;
 
+    protected HotelBookingPage(WebDriver driver) {
+        super(driver);
+
+        PageFactory.initElements(driver, this);
+    }
+
     public String getInfoScore() {
-        return infoPageScore.getText();
+        logger.info("Get hotel rating from hotel booking page");
+
+        return infoPageScore.getText().replace(",",".");
     }
 
     public boolean isErrorLabelAppers() {
         redirectToBillingPage.click();
+        logger.info("Getting warn for unregistered users");
+
         return driver.findElements(errorUsernameLabel).size() == 0;
     }
 
     public boolean isRegistrationFormExists() {
-        return driver.findElements(userRegistrationLabel).size() == 0;
-    }
+        logger.info("Getting user registration form");
 
-    protected HotelBookingPage(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, this);
+        return driver.findElements(userRegistrationLabel).size() == 0;
     }
 
     @Override
     protected HotelBookingPage openPage() {
+        logger.info("Open hotel booking page");
         return this;
     }
 }

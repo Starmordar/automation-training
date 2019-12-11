@@ -25,29 +25,37 @@ public class HotelPageInformation extends AbstractPage {
     @FindBy(className = "ReviewScore-Number")
     private WebElement infoPageScore;
 
+    protected HotelPageInformation(WebDriver driver) {
+        super(driver);
+
+        PageFactory.initElements(driver, this);
+    }
+
     public String getHotelRating() {
-        return infoPageScore.getText();
+        logger.info("Get hotel rating from hotel information page");
+
+        return infoPageScore.getText().replace(",",".");
     }
 
     public HotelBookingPage redirectToBookingPage() {
         WebDriverWait wait = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS);
         wait.until(ExpectedConditions.elementToBeClickable(bookBtn));
         bookBtn.click();
+        logger.info("Redirect to hotel booking page");
 
         return new HotelBookingPage(driver);
     }
 
     public String getHotelName() {
-        return destinationOfHotelPage.getText();
-    }
+        logger.info("Getting hotel name");
 
-    protected HotelPageInformation(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, this);
+        return destinationOfHotelPage.getText();
     }
 
     @Override
     protected HotelPageInformation openPage() {
+        logger.info("Open hotel information page");
+
         return this;
     }
 }

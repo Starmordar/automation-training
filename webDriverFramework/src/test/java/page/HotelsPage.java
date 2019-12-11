@@ -20,6 +20,7 @@ public class HotelsPage extends AbstractPage{
 
     protected HotelsPage(WebDriver driver) {
         super(driver);
+
         PageFactory.initElements(driver, this);
     }
 
@@ -31,13 +32,19 @@ public class HotelsPage extends AbstractPage{
 
         priceBox.clear();
         priceBox.sendKeys(maxPrice);
-        priceDropdown.click();
+        logger.info("Input price range to hotels filter");
 
+        priceDropdown.click();
+        logger.info("Search hotels by price range");
+
+        logger.info("Getting element with according price range");
         return driver.findElements(hotel).size() == 0;
     }
 
     @Override
     protected HotelsPage openPage() {
+        logger.info("Open hotels page");
+
         return this;
     }
 }

@@ -19,32 +19,27 @@ import static util.StringUtils.NORWAY_BANNER_CONTENT;
 
 public class HomePageTest extends CommonCondition {
 
-//    @Test
-//    public void userCannotCreateNewAccountWithoutCaptchaSubmit() {
-//        User userData = UserCreator.authentificationData();
-//
-//        boolean hasCaptchaError = new HomePage(driver)
-//                .openPage()
-//                .openRegistrationMenu()
-//                .inputUserData(
-//                        userData.getEmail(),
-//                        userData.getPassword(),
-//                        userData.getFirstName(),
-//                        userData.getFirstName()
-//                )
-//                .isCaptchaWarnAppearsOnScreen();
-//
-//        Assert.assertTrue(hasCaptchaError);
-//    }
-//
-//    @Test
-//    public void cookiesWarnAppearsWhenUserEnterPage() {
-//        boolean hasCookiesWarn = new HomePage(driver)
-//                .openPage()
-//                .isCookiesWarnAppearsOnScreen();
-//
-//        Assert.assertTrue(hasCookiesWarn);
-//    }
+    @Test
+    public void userCannotCreateNewAccountWithoutCaptchaSubmit() {
+        User userData = UserCreator.authentificationData();
+
+        boolean hasCaptchaError = new HomePage(driver)
+                .openPage()
+                .openRegistrationMenu()
+                .inputUserData(userData)
+                .isCaptchaWarnAppearsOnScreen();
+
+        Assert.assertTrue(hasCaptchaError);
+    }
+
+    @Test
+    public void cookiesWarnAppearsWhenUserEnterPage() {
+        boolean hasCookiesWarn = new HomePage(driver)
+                .openPage()
+                .isCookiesWarnAppearsOnScreen();
+
+        Assert.assertTrue(hasCookiesWarn);
+    }
 
     @Test
     public void chooseMainPageLanguageStoresInCookies() {
@@ -57,17 +52,17 @@ public class HomePageTest extends CommonCondition {
         Assert.assertEquals(NORWAY_BANNER_CONTENT, bannerContent);
     }
 
-//    @Test
-//    public void lastSuccessfulSearchSavesInHomePageInputField() {
-//        CountrySearchOptions countryData = CountrySearchOptionsCreator.countrySearchData();
-//
-//        String cityName = new HomePage(driver)
-//                .openPage()
-//                .typeCity(countryData.getCountry())
-//                .submitHotelSearch()
-//                .redirectToHomePage()
-//                .getCityNameFromInputField();
-//
-//        Assert.assertEquals(countryData.getCountry(), cityName);
-//    }
+    @Test
+    public void lastSuccessfulSearchSavesInHomePageInputField() {
+        CountrySearchOptions countryData = CountrySearchOptionsCreator.countrySearchData();
+
+        String cityName = new HomePage(driver)
+                .openPage()
+                .typeCity(countryData.getCountry())
+                .submitHotelSearch()
+                .redirectToHomePage()
+                .getCityNameFromInputField();
+
+        Assert.assertEquals(countryData.getCountry(), cityName);
+    }
 }

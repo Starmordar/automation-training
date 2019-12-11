@@ -1,5 +1,7 @@
 package page;
 
+import model.HotelSearchOptions;
+import model.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -54,49 +56,67 @@ public class HomePage extends AbstractPage {
     }
 
     public boolean isCookiesWarnAppearsOnScreen() {
+        logger.info("Try get cookie warn element");
         return driver.findElements(cookieWarnContainer).size() != 0;
     }
 
     public HomePage changeSystemLang() {
         currentPageLang.click();
+        logger.info("Open language selection section");
+
         norwayPageLang.click();
-        logger.info("kek");
+        logger.info("Choose Norway language as default");
+
         return new HomePage(driver);
     }
 
     public HomePage refreshPage() {
         driver.navigate().refresh();
+        logger.info("Refresh page");
 
         return this;
     }
 
     public String getUpdatedMainHeroBanner() {
+        logger.info("Getting value from main-hero banner on home page");
         return mainHeroBannerInfo.getText();
     }
 
     public HomePage openRegistrationMenu() {
         openRegistration.click();
+        logger.info("Open registration form");
 
         return this;
     }
 
-    public HomePage inputUserData(String email, String password, String firstName, String lastName) {
-        emailInputField.sendKeys(email);
-        passwordInputField.sendKeys(password);
-        firstnameInputField.sendKeys(firstName);
-        lastnameInputField.sendKeys(lastName);
+    public HomePage inputUserData(User userData) {
+        emailInputField.sendKeys(userData.getEmail());
+        logger.info("Input user email");
+
+        passwordInputField.sendKeys(userData.getPassword());
+        logger.info("Input user password");
+
+        firstnameInputField.sendKeys(userData.getFirstName());
+        logger.info("Input user firstname");
+
+        lastnameInputField.sendKeys(userData.getLastName());
+        logger.info("Input user lastname");
+
         submitBtn.click();
+        logger.info("submit registration button");
 
         return this;
     }
 
     public boolean isCaptchaWarnAppearsOnScreen() {
-        return driver.findElements(captchaValidator).size() != 0;
+        logger.info("Getting captcha error message");
+        return driver.findElements(captchaValidator).size() == 0;
     }
 
-    public HomePage typeHotelOptions(String cityName, String arrivalDate, String departueDate, String occupancy) {
+    public HomePage typeHotelOptions(HotelSearchOptions hotelData) {
         searchInputField.click();
-        searchInputField.sendKeys(cityName);
+        searchInputField.sendKeys(hotelData.getDestination());
+        logger.info("Input hotel options");
 
         return this;
     }
@@ -104,17 +124,21 @@ public class HomePage extends AbstractPage {
     public SearchHotelResult submitHotelSearch() {
         backMainPageViewBtn.click();
         submitSearchBtn.click();
+        logger.info("Redirect to page with search results");
 
         return new SearchHotelResult(driver);
     }
 
     public String getCityNameFromInputField() {
+        logger.info("Get value from search input");
+
         return searchInputField.getAttribute("value");
     }
 
     public HomePage typeCity(String cityName) {
         searchInputField.click();
         searchInputField.sendKeys(cityName);
+        logger.info("Type city name in search input");
 
         return this;
     }
@@ -122,6 +146,9 @@ public class HomePage extends AbstractPage {
     @Override
     public HomePage openPage() {
         driver.get(HOMEPAGE_URL);
+
+        logger.info("Open home page");
+
         return this;
     }
 }
