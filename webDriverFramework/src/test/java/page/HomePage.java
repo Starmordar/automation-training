@@ -57,7 +57,7 @@ public class HomePage extends AbstractPage {
 
     public boolean isCookiesWarnAppearsOnScreen() {
         logger.info("Try get cookie warn element");
-        return driver.findElements(cookieWarnContainer).size() != 0;
+        return driver.findElements(cookieWarnContainer).size() == 0;
     }
 
     public HomePage changeSystemLang() {
@@ -110,7 +110,7 @@ public class HomePage extends AbstractPage {
 
     public boolean isCaptchaWarnAppearsOnScreen() {
         logger.info("Getting captcha error message");
-        return driver.findElements(captchaValidator).size() == 0;
+        return driver.findElements(captchaValidator).size() != 0;
     }
 
     public HomePage typeHotelOptions(HotelSearchOptions hotelData) {

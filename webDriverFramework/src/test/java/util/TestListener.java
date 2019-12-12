@@ -23,7 +23,7 @@ public class TestListener implements ITestListener {
     }
 
     public void onTestSuccess(ITestResult iTestResult) {
-        logger.info(iTestResult.getMethod().getMethodName() + "build successful");
+        logger.info(iTestResult.getMethod().getMethodName() + " build successful");
     }
 
     public void onTestFailure(ITestResult iTestResult) {
@@ -34,11 +34,11 @@ public class TestListener implements ITestListener {
     }
 
     public void onTestSkipped(ITestResult iTestResult) {
-        logger.info(iTestResult.getMethod().getMethodName() + "skipped");
+        logger.info(iTestResult.getMethod().getMethodName() + " skipped");
     }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
-
+        logger.info(iTestResult.getMethod().getMethodName() + " failed within success percentage");
     }
 
     public void onStart(ITestContext iTestContext) {
